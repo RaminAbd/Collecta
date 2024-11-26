@@ -1,0 +1,24 @@
+<header class="header-wrapper">
+  <div class="logo">
+    <img src="logo-new.png" alt="logo">
+  </div>
+  <nav class="navigation">
+    <a routerLink="home" [routerLinkActive]="['active']">Home</a>
+    <a routerLink="team" [routerLinkActive]="['active']">Team Members</a>
+    <a routerLink="mission" [routerLinkActive]="['active']">Our mission</a>
+    <a routerLink="careers" [routerLinkActive]="['active']">Careers</a>
+    <a routerLink="contact" [routerLinkActive]="['active']">Contact Us</a>
+  </nav>
+  <div class="menu-button w-nav-button" (click)="toggleMenu()" >
+    <div class="icon-menu w-icon-nav-menu"><i class="pi pi-bars"></i></div>
+  </div>
+  <div class="nav-overlay-mobile"  [@menuExpand]="isOpen ? 'open' : 'closed'" >
+    <nav class="myNav navigation">
+      <a routerLink="home" (click)="isOpen = false" [routerLinkActive]="['active']">Home</a>
+      <a routerLink="team" (click)="isOpen = false" [routerLinkActive]="['active']">Team Members</a>
+      <a routerLink="mission" (click)="isOpen = false" [routerLinkActive]="['active']">Our mission</a>
+      <a routerLink="careers" (click)="isOpen = false" [routerLinkActive]="['active']">Careers</a>
+      <a routerLink="contact" (click)="isOpen = false" [routerLinkActive]="['active']">Contact Us</a>
+    </nav>
+  </div>
+</header>

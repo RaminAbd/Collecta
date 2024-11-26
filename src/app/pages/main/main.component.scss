@@ -1,0 +1,24 @@
+.gradient-background{
+  z-index: 1;
+  //background-image: linear-gradient(270deg, black, #0000), linear-gradient(17deg, #0031ac99, black 62%);
+  width: 100%;
+  min-height: 100vh;
+  position: fixed;
+  top: 0;
+
+  background-image: linear-gradient(270deg, black, #0000), linear-gradient(17deg, #000, black 30%);
+
+}
+.main-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  padding: .7em;
+  color: #fff;
+  z-index: 2;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.content{
+  min-height: calc(100vh - (85px + 0.7em));
+}
