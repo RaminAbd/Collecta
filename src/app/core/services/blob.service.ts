@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BaseCrudApiService } from './base-crud.api.service';
 import { ApplicationMessageCenterService } from './ApplicationMessageCenter.service';
-import { FileModel } from '../models/File.model';
+import {FileModel} from "../models/File.model";
 
 @Injectable({
   providedIn: 'root',

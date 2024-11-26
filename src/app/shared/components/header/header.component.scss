@@ -7,7 +7,7 @@
   z-index: 3;
   .logo {
     img {
-      height: 60px;
+      height: 30px;
     }
   }
   nav {
@@ -15,7 +15,7 @@
     grid-row-gap: 4px;
     -webkit-backdrop-filter: blur(40px);
     backdrop-filter: blur(40px);
-    background-color: #47474780;
+    background-color: rgba(255, 255, 255, 0.11);
     border-radius: 0.76em;
     flex-flow: wrap;
     justify-content: center;
@@ -38,10 +38,11 @@
       text-decoration: none;
       //opacity: 1;
       &.active {
-        background-color: #0003;
+        background-color: rgba(255, 255, 255, 0.2);
       }
       &:hover {
-        background-color: #0006;
+        background-color: rgba(255, 255, 255, 0.4);
+        color: rgba(255, 255, 255, 0.6);
       }
       //&:hover ~ a:not(:hover) {
       //  opacity: 0.3;

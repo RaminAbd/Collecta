@@ -1,6 +1,5 @@
 import {Component, ElementRef, OnInit} from '@angular/core';
 import {RouterLink, RouterLinkActive} from "@angular/router";
-import { gsap } from 'gsap';
 import {NgIf} from "@angular/common";
 import {animate, state, style, transition, trigger} from "@angular/animations";
 @Component({

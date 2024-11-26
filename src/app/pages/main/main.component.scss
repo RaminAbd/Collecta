@@ -5,9 +5,9 @@
   min-height: 100vh;
   position: fixed;
   top: 0;
-
-  background-image: linear-gradient(270deg, black, #0000), linear-gradient(17deg, #000, black 30%);
-
+  background-size: cover;
+  //background-image: url(https://preview.erilisdesign.com/html/muriel/assets/images/image-1.jpg)
+  background-color: #5085ec
 }
 .main-wrapper {
   width: 100%;
@@ -20,5 +20,5 @@
 }
 
 .content{
-  min-height: calc(100vh - (85px + 0.7em));
+  min-height: calc(100vh - 150px);
 }
