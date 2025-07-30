@@ -16,6 +16,7 @@ export class SubscribeComponent {
   email: any;
   subscribe(){
     console.log(this.email);
-    this.messageService.showSuccessMessage('Success', 'Successfully sent!')
+    this.messageService.showSuccessMessage('Successfully sent!')
+    this.email=''
   }
 }

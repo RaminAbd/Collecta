@@ -1,7 +1,7 @@
 <header class="header-wrapper">
   <div class="logo">
     <img src="new-logo.svg" alt="logo">
-<!--    <p>COLLECTA</p>-->
+    <!--    <p>COLLECTA</p>-->
   </div>
   <nav class="navigation">
     <a routerLink="home" [routerLinkActive]="['active']">Home</a>
@@ -9,6 +9,7 @@
     <a routerLink="about" [routerLinkActive]="['active']">About Us</a>
     <a routerLink="services" [routerLinkActive]="['active']">Services</a>
     <a routerLink="contact" [routerLinkActive]="['active']">Contact Us</a>
+    <a routerLink="sign-in" [routerLinkActive]="['active']">Sign in</a>
   </nav>
   <div class="menu-button w-nav-button" (click)="toggleMenu()" >
     <div class="icon-menu w-icon-nav-menu"><i class="pi pi-bars"></i></div>
@@ -20,6 +21,8 @@
       <a routerLink="about" (click)="isOpen = false" [routerLinkActive]="['active']">About Us</a>
       <a routerLink="services" (click)="isOpen = false" [routerLinkActive]="['active']">Services</a>
       <a routerLink="contact" (click)="isOpen = false" [routerLinkActive]="['active']">Contact Us</a>
+      <a routerLink="sign-in" (click)="isOpen = false" [routerLinkActive]="['active']">Sign in</a>
+
     </nav>
   </div>
 </header>

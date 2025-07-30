@@ -1,0 +1,32 @@
+<div class="sign-up-wrapper">
+  <div class="form-side">
+    <a routerLink="/" class="logo">
+      <img style="height: 36px;" src="logo.svg" alt="" />
+    </a>
+    <div class="txt">
+      <h4>
+        {{
+          "Verify Your Number" | translate
+        }}
+      </h4>
+      <p>{{ "Customers with past due payments Customers with past" | translate }}</p>
+    </div>
+    <div>
+      <div class="expanders">
+        <div class="input-item">
+          <p-inputOtp [(ngModel)]="request.otpCode" [integerOnly]="true" />
+        </div>
+        <button (click)="verify()">
+          {{ "Verify" | translate
+          }}<i class="pi pi-spin pi-spinner" *ngIf="loading"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="image-side">
+    <img
+      src="auth.png"
+      alt=""
+    />
+  </div>
+</div>

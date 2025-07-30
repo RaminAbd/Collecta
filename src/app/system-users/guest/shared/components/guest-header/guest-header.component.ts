@@ -1,17 +1,16 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
+import {Component, ElementRef} from '@angular/core';
 import {RouterLink, RouterLinkActive} from "@angular/router";
-import {NgIf} from "@angular/common";
 import {animate, state, style, transition, trigger} from "@angular/animations";
+
 @Component({
-  selector: 'app-header',
+  selector: 'app-guest-header',
   standalone: true,
   imports: [
-    RouterLinkActive,
     RouterLink,
-    NgIf
+    RouterLinkActive
   ],
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.scss',
+  templateUrl: './guest-header.component.html',
+  styleUrl: './guest-header.component.scss',
   animations: [
     trigger('menuExpand', [
       state('open', style({
@@ -28,13 +27,10 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
     ])
   ]
 })
-export class HeaderComponent implements OnInit {
+export class GuestHeaderComponent {
   isOpen: boolean = false;
 
   constructor(private el: ElementRef) {}
-
-  ngOnInit(): void {
-  }
 
   toggleMenu() {
     if(this.isOpen){

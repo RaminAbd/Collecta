@@ -1,0 +1,143 @@
+<div class="sign-up-wrapper">
+  <div class="form-side">
+    <a routerLink="/" class="logo">
+      <img style="height: 36px;" src="logo.svg" alt="" />
+    </a>
+    <div class="txt">
+      <h4>
+        {{
+          "Create new account" | translate
+        }}
+      </h4>
+      <p>{{ "Customers with past due payments Customers with past" | translate }}</p>
+    </div>
+    <div>
+      <div class="expanders">
+        <form
+          [formGroup]="requestForm"
+          (submit)="Action()"
+          class="item expander-container"
+        >
+
+          <div class="inputs">
+            <div class="row1">
+              <div class="input-item">
+                <label for="companyName">{{ "Company name" | translate }}</label>
+                <input
+                  type="text"
+                  formControlName="companyName"
+                  id="companyName"
+                  placeholder="George Black"
+                  [class.invalid]="validateField('companyName')"
+                />
+              </div>
+              <div class="input-item">
+                <label for="companyId">{{ "Company ID" | translate }}</label>
+                <input
+                  type="text"
+                  formControlName="companyId"
+                  id="companyId"
+                  placeholder="29302"
+                  [class.invalid]="validateField('companyId')"
+                />
+              </div>
+
+            </div>
+            <div class="row1">
+              <div class="input-item">
+                <label for="phoneNumber">{{ "Phone Number" | translate }}</label>
+                <input
+                  type="text"
+                  formControlName="phoneNumber"
+                  id="phoneNumber"
+                  placeholder="597282328"
+                  [class.invalid]="validateField('phoneNumber')"
+                />
+              </div>
+            </div>
+            <div class="row1">
+              <div class="input-item">
+                <label for="password">{{ "Password" | translate }}</label>
+                <div class="block">
+                  <input
+                    [type]="passVisible ? 'text' : 'password'"
+                    id="password"
+                    formControlName="password"
+                    placeholder="Password_123"
+                    [class.invalid]="
+                      requestForm.get('password')?.hasError('pattern') ||
+                      (!requestForm.get('password')?.value &&
+                        isSubmitted)
+                    "
+                  />
+                  <span>
+                    <i
+                      *ngIf="!passVisible"
+                      (click)="passVisible = !passVisible"
+                      class="pi pi-eye"
+                    ></i>
+                    <i
+                      *ngIf="passVisible"
+                      (click)="passVisible = !passVisible"
+                      class="pi pi-eye-slash"
+                    ></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="row1">
+              <div class="input-item">
+                <label for="repeat">{{ "Confirm password" | translate }}</label>
+                <div class="block">
+                  <input
+                    [type]="repeatVisible ? 'text' : 'password'"
+                    id="repeat"
+                    placeholder="Password_123"
+                    formControlName="confirmPassword"
+                    [class.invalid]="
+                      requestForm
+                        .get('confirmPassword')
+                        ?.hasError('pattern') ||
+                      (!requestForm.get('confirmPassword')?.value &&
+                        isSubmitted) ||
+                      (requestForm.get('password')?.value !==
+                        requestForm.get('confirmPassword')?.value &&
+                        isSubmitted)
+                    "
+                  />
+                  <span>
+                    <i
+                      *ngIf="!repeatVisible"
+                      (click)="repeatVisible = !repeatVisible"
+                      class="pi pi-eye"
+                    ></i>
+                    <i
+                      *ngIf="repeatVisible"
+                      (click)="repeatVisible = !repeatVisible"
+                      class="pi pi-eye-slash"
+                    ></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+
+            <button >
+              {{ "Sign Up" | translate
+              }}<i class="pi pi-spin pi-spinner" *ngIf="signinLoading"></i>
+            </button>
+            <div class="create">
+              <p>Have an account? <span routerLink="/sign-in">Sign in</span></p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="image-side">
+    <img
+      src="auth.png"
+      alt=""
+    />
+  </div>
+</div>

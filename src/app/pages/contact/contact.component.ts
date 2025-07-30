@@ -27,6 +27,6 @@ export class ContactComponent {
       subject:'',
       message:'',
     }
-    this.appMessage.showSuccessMessage('Success', 'Successfully sent!')
+    this.appMessage.showSuccessMessage( 'Successfully sent!')
   }
 }

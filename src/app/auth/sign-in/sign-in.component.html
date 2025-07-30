@@ -1,0 +1,91 @@
+<div class="sign-up-wrapper">
+  <div class="form-side">
+    <a routerLink="/" class="logo">
+      <img style="height: 36px;" src="logo.svg" alt="" />
+    </a>
+    <div class="txt">
+      <h4>
+        {{
+          "Create new account" | translate
+        }}
+      </h4>
+      <p>{{ "Customers with past due payments Customers with past" | translate }}</p>
+    </div>
+    <div>
+      <div class="expanders">
+        <form
+          [formGroup]="requestForm"
+          (submit)="Action()"
+          class="item expander-container"
+        >
+
+          <div class="inputs">
+            <div class="row1">
+              <div class="input-item">
+                <label for="username">{{ "Phone number" | translate }}</label>
+                <input
+                  type="text"
+                  formControlName="userName"
+                  id="username"
+                  [class.invalid]="validateField('userName')"
+                />
+              </div>
+            </div>
+            <div class="row1">
+              <div class="input-item">
+                <label for="password">{{ "Password" | translate }}</label>
+                <div class="block">
+                  <input
+                    [type]="passVisible ? 'text' : 'password'"
+                    id="password"
+                    formControlName="password"
+                    [class.invalid]="validateField('password')"
+                  />
+                  <span>
+                    <i
+                      *ngIf="!passVisible"
+                      (click)="passVisible = !passVisible"
+                      class="pi pi-eye"
+                    ></i>
+                    <i
+                      *ngIf="passVisible"
+                      (click)="passVisible = !passVisible"
+                      class="pi pi-eye-slash"
+                    ></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="row1">
+              <div class="remember" style="flex: 1">
+                <input
+                  type="checkbox"
+                  id="rememberMe"
+                  name="rememberMe"
+                  formControlName="remember"
+                />
+                <label for="rememberMe">{{ "Save account" | translate }}</label>
+              </div>
+              <div class="forgot" style="flex: 1; display: flex; justify-content: flex-end;">
+                <a routerLink="/forgot">{{ "Forgot password?" | translate }}</a>
+              </div>
+            </div>
+            <button>
+              {{ "Login" | translate
+              }}<i class="pi pi-spin pi-spinner" *ngIf="signinLoading"></i>
+            </button>
+            <div class="create">
+              <p>Don’t have an account? <span routerLink="/select-role">Create new</span></p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="image-side">
+    <img
+      src="auth.png"
+      alt=""
+    />
+  </div>
+</div>

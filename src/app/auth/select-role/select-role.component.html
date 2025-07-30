@@ -1,0 +1,43 @@
+<div class="sign-up-wrapper">
+  <div class="form-side">
+    <a routerLink="/" class="logo">
+      <img style="height: 36px;" src="logo.svg" alt="" />
+    </a>
+    <div class="txt">
+      <h4>
+        {{
+          "Create new account" | translate
+        }}
+      </h4>
+      <p>{{ "Customers with past due payments Customers with past" | translate }}</p>
+    </div>
+    <div>
+      <div class="expanders">
+        <div class="item" [ngClass]="{'selected':selectedRole === 'business'}" (click)="selectedRole = 'business'">
+          <img src="business.png" alt="">
+          <div class="txt">
+            <h5>Bussiness</h5>
+            <p>Looking to buy products easily</p>
+          </div>
+        </div>
+        <div class="item" [ngClass]="{'selected':selectedRole === 'customer'}" (click)="selectedRole = 'customer'">
+          <img src="customer.png" alt="">
+          <div class="txt">
+            <h5>Customer</h5>
+            <p>Looking to buy products easily</p>
+          </div>
+        </div>
+        <button [routerLink]="'/sign-up/'+selectedRole">
+          {{ "Continue" | translate
+          }}
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="image-side">
+    <img
+      src="auth.png"
+      alt=""
+    />
+  </div>
+</div>

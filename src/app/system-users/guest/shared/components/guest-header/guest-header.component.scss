@@ -134,10 +134,10 @@
   height: 100vh; /* Start with height of 0 */
   overflow: hidden; /* Hide overflow when collapsed */
 
- &.hide{
-   opacity: 0;
-   z-index: -999;
- } /* Initially hidden */
+  &.hide{
+    opacity: 0;
+    z-index: -999;
+  } /* Initially hidden */
   &.show{
     z-index: 999;
     opacity: 1;
