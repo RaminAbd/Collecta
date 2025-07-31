@@ -1,0 +1,48 @@
+<div class="sign-up-wrapper">
+  <div class="form-side">
+    <a routerLink="/" class="logo">
+      <img style="height: 36px" src="logo.svg" alt="" />
+    </a>
+    <div class="txt">
+      <h4>
+        {{ "Recover your account" | translate }}
+      </h4>
+      <p>
+        {{ "Customers with past due payments Customers with past" | translate }}
+      </p>
+    </div>
+    <div>
+      <div class="expanders">
+        <form
+          [formGroup]="requestForm"
+          (submit)="Action()"
+          class="item expander-container"
+        >
+          <div class="inputs">
+            <div class="row1">
+              <div class="input-item">
+                <label for="phoneNumber">{{
+                  "Phone Number" | translate
+                }}</label>
+                <input
+                  type="text"
+                  formControlName="phoneNumber"
+                  id="phoneNumber"
+                  placeholder="597282328"
+                  [class.invalid]="validateField('phoneNumber')"
+                />
+              </div>
+            </div>
+            <button>
+              {{ "Send code" | translate
+              }}<i class="pi pi-spin pi-spinner" *ngIf="signinLoading"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="image-side">
+    <img src="auth.png" alt="" />
+  </div>
+</div>

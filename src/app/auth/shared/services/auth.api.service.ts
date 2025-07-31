@@ -14,13 +14,13 @@ export class AuthApiService extends BaseApiService {
     super(http, handler);
   }
   SignIn(req: AuthRequestModel) {
-    return this.http.post<AuthResponseModel>(this.BASE_URL+this.serviceUrl + 'SignIn', req);
+    return this.http.post<AuthResponseModel>(this.BASE_URL+this.serviceUrl + 'sign-in', req);
   }
   ChangePassword(req: any) {
     return this.post(this.serviceUrl + 'ChangePassword', req)
   }
   ForgotPassword(req: any) {
-    return this.post(this.serviceUrl + 'ForgotPassword', req)
+    return this.post(this.serviceUrl + 'forgot-password', req)
   }
   Exists(username:string){
     return this.get(this.serviceUrl + '/account-exists/', username);

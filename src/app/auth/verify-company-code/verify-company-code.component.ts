@@ -38,13 +38,19 @@ export class VerifyCompanyCodeComponent {
   constructor() {
     this.request = JSON.parse(decodeURIComponent(this.encoded));
     this.service.component = this;
+    this.service.sendVerificationCode()
   }
 
   verify() {
     if (this.request.otpCode) {
+      this.loading = true;
       this.service.signup()
     } else {
       this.message.showTranslatedWarningMessage('Otp code is not valid!');
     }
+  }
+
+  sendCode() {
+    this.service.sendVerificationCode()
   }
 }
