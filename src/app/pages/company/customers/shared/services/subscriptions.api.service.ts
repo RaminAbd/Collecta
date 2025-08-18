@@ -16,4 +16,8 @@ export class SubscriptionsApiService extends BaseCrudApiService {
   GetAllBySubscriberId(subscriberId:string) {
     return this.get(this.serviceUrl + 'get-subscriptions/', subscriberId);
   }
+
+  Add(req:any){
+    return this.post(this.serviceUrl + 'add', req);
+  }
 }

@@ -1,0 +1,77 @@
+.form {
+  display: flex;
+  width: 100%;
+  max-width: 716px;
+  padding: 25px 24px;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 24px;
+  border-radius: 12px;
+  border: 1px solid #f4f4f4;
+  background: #fff;
+  .row1 {
+    width: 100%;
+    .input-item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+      width: 100%;
+      @media (max-width: 769px) {
+        width: 100%;
+      }
+
+      label {
+        color: #90928d;
+        font-size: 14px;
+        font-weight: 500;
+      }
+    }
+  }
+  ::ng-deep {
+    .p-select .p-select-overlay {
+      max-width: 100%;
+    }
+    .p-select-option {
+      white-space: normal;
+    }
+    .p-editor .p-editor-content.ql-snow {
+      height: 430px !important;
+    }
+  }
+
+}
+.btns {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 32px;
+  button {
+    display: flex;
+    padding: 8px 16px;
+    align-items: center;
+    gap: 6px;
+    border-radius: 12px;
+    background: #11272a;
+    color: #fff;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    //width: 116px;
+    height: 37px;
+    justify-content: center;
+  }
+}
+::ng-deep {
+  p-dropdown.invalid {
+    border: none !important;
+  }
+}
+
+::ng-deep .p-dynamic-dialog{
+  border-radius: 12px;
+  overflow: hidden;
+}

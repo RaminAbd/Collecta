@@ -30,4 +30,8 @@ export class CustomerDetailsComponent {
     this.service.getItem()
     this.service.getAllProvidedServices()
   }
+
+  openSubscriptionDialog() {
+    this.service.openSubscriptionDialog()
+  }
 }

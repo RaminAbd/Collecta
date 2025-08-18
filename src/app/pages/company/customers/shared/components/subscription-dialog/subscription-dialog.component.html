@@ -1,0 +1,55 @@
+<div class="form">
+  <div class="row1">
+    <div class="input-item">
+      <label for="exam">{{ "Service" }}</label>
+      <p-dropdown
+        [style]="{ width: '100%', height: '49px' }"
+        [options]="providedServices"
+        optionLabel="name"
+        optionValue="id"
+        [(ngModel)]="request.serviceId"
+        id="exam"
+        [class.invalid]="!request.serviceId && isSubmitted"
+      ></p-dropdown>
+    </div>
+  </div>
+  <div class="row1">
+    <div class="input-item">
+      <label>{{ "Pay day" }} </label>
+      <input
+        type="number"
+        [ngClass]="{
+          invalid: !request.payDay && isSubmitted,
+        }"
+        [(ngModel)]="request.payDay"
+      />
+    </div>
+  </div>
+  <div class="row1">
+    <div class="input-item">
+      <label>{{ "Quantity" }} </label>
+      <input
+        type="number"
+        [ngClass]="{
+          invalid: !request.qty && isSubmitted,
+        }"
+        [(ngModel)]="request.qty"
+      />
+    </div>
+  </div>
+  <div class="row1">
+    <div class="input-item">
+      <label>{{ "Price" }} </label>
+      <input
+        type="number"
+        [ngClass]="{
+          invalid: !request.price && isSubmitted,
+        }"
+        [(ngModel)]="request.price"
+      />
+    </div>
+  </div>
+</div>
+<div class="btns">
+  <button (click)="save()">Add a subscription</button>
+</div>

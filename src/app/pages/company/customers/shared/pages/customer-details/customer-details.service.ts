@@ -9,6 +9,8 @@ import {
   ProvidedServicesResponseModel
 } from "../../../../provided-services/shared/models/provided-services-response.model";
 import {SubscriptionsApiService} from "../../services/subscriptions.api.service";
+import {DialogService} from "primeng/dynamicdialog";
+import {SubscriptionDialogComponent} from "../../components/subscription-dialog/subscription-dialog.component";
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +20,7 @@ export class CustomerDetailsService {
   private psService: ProvidedServicesApiService = inject(
     ProvidedServicesApiService
   );
+  public dialogService: DialogService = inject(DialogService);
   private storage: StorageService = inject(StorageService);
   private subsService: SubscriptionsApiService = inject(SubscriptionsApiService);
   component: CustomerDetailsComponent;
@@ -52,4 +55,33 @@ export class CustomerDetailsService {
   }
 
 
+  openSubscriptionDialog() {
+    console.log('geldi')
+    const ref = this.dialogService.open(SubscriptionDialogComponent, {
+      header: 'Adding a service to a costumer',
+      width: '750px',
+      style: {
+        maxWidth: '95%',
+
+      },
+      data:this.providedServices
+    });
+    ref.onClose.subscribe((e: any) => {
+      if (e) {
+        console.log(e)
+       this.addSubscription(e)
+      }
+    });
+  }
+
+  addSubscription(e:SubscriptionModel){
+    let st =this.storage.getObject('authResponse');
+    let req:any = {
+      subscriberId:st.id,
+      subscription:e
+    }
+    this.subsService.Add(req).subscribe((resp: any) => {
+      this.getAllSubscriptions()
+    })
+  }
 }

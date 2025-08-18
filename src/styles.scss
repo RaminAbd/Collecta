@@ -254,12 +254,12 @@ button {
 .p-dialog .p-dialog-header {
   padding: 14px 24px 14px 24px !important;
   .p-dialog-title {
-    color: var(--text-color);
-    /* font-family: Inter; */
-    font-size: 20px !important;
+    color: #02191C !important;
+    font-family: Poppins;
+    font-size: 24px !important;
     font-style: normal;
-    font-weight: 700 !important;
-    line-height: normal;
+    font-weight: 500 !important;
+    line-height: 120%;
   }
   .p-dialog-header-icon:focus {
     box-shadow: none !important;
