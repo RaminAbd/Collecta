@@ -45,7 +45,7 @@ export class VerifyCompanyCodeService {
 
   signin() {
     let req = {
-      userName: this.component.request.phoneNumber,
+      username: this.component.request.companyId,
       password: this.component.request.password,
       remember: true,
     };

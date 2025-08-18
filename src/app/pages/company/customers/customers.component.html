@@ -1,0 +1,10 @@
+<div>
+  <app-customers-table
+    [Array]="items"
+    [cols]="cols"
+    [TableName]="'Customers list'"
+    [tableDescription]="'Customers with past due payments requiring immediate attention'"
+    [showCreate]="true"
+    (Action)="tableActionHandler($event)"
+  ></app-customers-table>
+</div>

@@ -1,0 +1,282 @@
+<div class="wrapper">
+  <div class="heading">
+    <h3>My profile</h3>
+    <p>Customers with past due payments requiring immediate attention</p>
+  </div>
+  <div class="form">
+    <div class="form-heading">
+      <h4>Company Details</h4>
+      <div class="status" [ngClass]="{ active: request.verified }">
+        <div class="dot"></div>
+        <p>{{ request.verified ? "Verified" : "Not verified" }}</p>
+      </div>
+    </div>
+    <div class="line"></div>
+    <div class="form-body">
+      <div class="row1">
+        <div class="input-item">
+          <label>{{ "Name" }} </label>
+          <input
+            type="text"
+            [ngClass]="{
+          invalid: !request.companyName && isSubmitted,
+        }"
+            [(ngModel)]="request.companyName"
+          />
+        </div>
+        <div class="input-item">
+          <label>{{ "Email" }} </label>
+          <input
+            type="text"
+            [ngClass]="{
+          invalid: !request.businessEmail && isSubmitted,
+        }"
+            [(ngModel)]="request.businessEmail"
+          />
+        </div>
+      </div>
+      <div class="row1">
+        <div class="input-item">
+          <label for="exam">{{ "Business sector" }}</label>
+          <p-dropdown
+            [style]="{ width: '100%', height: '49px' }"
+            [options]="sectors"
+            optionLabel="name"
+            optionValue="value"
+            [(ngModel)]="request.businessSector"
+            id="exam"
+            [class.invalid]="!request.businessSector && isSubmitted"
+          ></p-dropdown>
+        </div>
+      </div>
+      <div class="row1">
+        <div class="input-item file-input">
+          <label>{{ "Logo" }}</label>
+          <label
+            class="file-label"
+            for="video"
+            [ngClass]="{ invalid: isSubmitted && !request.logo.fileUrl }"
+          >
+            <p
+              class="empty-file"
+              *ngIf="!request.logo.fileUrl && !request.logo.fileLoading"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+              >
+                <path
+                  d="M7 1.75V8.75M7 1.75L9.91667 4.66667M7 1.75L4.08333 4.66667M12.25 8.75V11.0833C12.25 11.3928 12.1271 11.6895 11.9083 11.9083C11.6895 12.1271 11.3928 12.25 11.0833 12.25H2.91667C2.60725 12.25 2.3105 12.1271 2.09171 11.9083C1.87292 11.6895 1.75 11.3928 1.75 11.0833V8.75"
+                  stroke="#03181D"
+                  stroke-width="1.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              Upload Image
+            </p>
+            <i
+              *ngIf="request.logo.fileLoading"
+              class="pi pi-spin pi-spinner"
+            ></i>
+            <p *ngIf="request.logo.fileUrl && !request.logo.fileLoading">
+              {{ getFileName(request.logo.fileName) }}
+            </p>
+          </label>
+          <input
+            id="video"
+            type="file"
+            [(ngModel)]="request.logo.fakeFile"
+            (change)="getImage($event)"
+            multiple="false"
+            accept="image/*"
+          />
+        </div>
+      </div>
+      <div class="row1">
+        <div class="input-item file-input">
+          <label>{{ "Document" }}</label>
+          <label
+            class="file-label"
+            for="extract"
+            [ngClass]="{ invalid: isSubmitted && !request.extract.fileUrl }"
+          >
+            <p
+              class="empty-file"
+              *ngIf="!request.extract.fileUrl && !request.extract.fileLoading"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+              >
+                <path
+                  d="M7 1.75V8.75M7 1.75L9.91667 4.66667M7 1.75L4.08333 4.66667M12.25 8.75V11.0833C12.25 11.3928 12.1271 11.6895 11.9083 11.9083C11.6895 12.1271 11.3928 12.25 11.0833 12.25H2.91667C2.60725 12.25 2.3105 12.1271 2.09171 11.9083C1.87292 11.6895 1.75 11.3928 1.75 11.0833V8.75"
+                  stroke="#03181D"
+                  stroke-width="1.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              Upload file
+            </p>
+            <i
+              *ngIf="request.extract.fileLoading"
+              class="pi pi-spin pi-spinner"
+            ></i>
+            <p *ngIf="request.extract.fileUrl && !request.extract.fileLoading">
+              {{ getFileName(request.extract.fileName) }}
+            </p>
+          </label>
+          <input
+            id="extract"
+            type="file"
+            [(ngModel)]="request.extract.fakeFile"
+            (change)="getFile($event)"
+            multiple="false"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form">
+    <div class="form-heading">
+      <h4>Profile Details</h4>
+    </div>
+    <div class="line"></div>
+    <div class="form-body">
+      <div class="row1">
+        <div class="input-item">
+          <label>{{ "First name" }} </label>
+          <input
+            type="text"
+            [ngClass]="{
+          invalid: !request.contactPerson.firstName && isSubmitted,
+        }"
+            [(ngModel)]="request.contactPerson.firstName"
+          />
+        </div>
+        <div class="input-item">
+          <label>{{ "Last name" }} </label>
+          <input
+            type="text"
+            [ngClass]="{
+          invalid: !request.contactPerson.lastName && isSubmitted,
+        }"
+            [(ngModel)]="request.contactPerson.lastName"
+          />
+        </div>
+      </div>
+      <div class="row1">
+        <div class="input-item">
+          <label>{{ "Email" }} </label>
+          <input
+            type="text"
+            [ngClass]="{
+          invalid: !request.contactPerson.email && isSubmitted,
+        }"
+            [(ngModel)]="request.contactPerson.email"
+          />
+        </div>
+        <div class="input-item">
+          <label>{{ "Phone number" }} </label>
+          <input
+            type="text"
+            [ngClass]="{
+          invalid: !request.contactPerson.phoneNumber && isSubmitted,
+        }"
+            [(ngModel)]="request.contactPerson.phoneNumber"
+          />
+        </div>
+      </div>
+      <div class="row1">
+        <div class="input-item">
+          <label>{{ "Personal ID" }} </label>
+          <input
+            type="text"
+            [ngClass]="{
+          invalid: !request.contactPerson.personalId && isSubmitted,
+        }"
+            [(ngModel)]="request.contactPerson.personalId"
+          />
+        </div>
+        <div class="input-item">
+          <label>{{ "Position" }} </label>
+          <input
+            type="text"
+            [ngClass]="{
+          invalid: !request.contactPerson.position && isSubmitted,
+        }"
+            [(ngModel)]="request.contactPerson.position"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form">
+    <div class="form-heading">
+      <h4>Social links</h4>
+    </div>
+    <div class="line"></div>
+    <div class="form-body">
+      <div class="row1" style="align-items: center">
+        <div class="icon">
+          <img src="insta.svg" alt="" />
+        </div>
+        <div class="input-item">
+          <input
+            type="text"
+            placeholder="Instagram link"
+            [(ngModel)]="request.instagramLink"
+          />
+        </div>
+      </div>
+      <div class="row1" style="align-items: center">
+        <div class="icon">
+          <img src="fb.svg" alt="" />
+        </div>
+        <div class="input-item">
+          <input
+            type="text"
+            placeholder="Facebook link"
+            [(ngModel)]="request.facebookLink"
+          />
+        </div>
+      </div>
+      <div class="row1" style="align-items: center">
+        <div class="icon">
+          <img src="telegram.svg" alt="" />
+        </div>
+        <div class="input-item">
+          <input
+            type="text"
+            placeholder="Telegram link"
+            [(ngModel)]="request.telegramLink"
+          />
+        </div>
+      </div>
+      <div class="row1" style="align-items: center">
+        <div class="icon">
+          <img src="wp.svg" alt="" />
+        </div>
+        <div class="input-item">
+          <input
+            type="text"
+            placeholder="WhatsApp Number"
+            [(ngModel)]="request.whatsAppNumber"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form">
+    <div class="btns">
+      <button (click)="save()">Save</button>
+    </div>
+  </div>
+</div>

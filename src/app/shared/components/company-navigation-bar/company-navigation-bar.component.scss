@@ -1,0 +1,116 @@
+.nav-bar-wrapper {
+  display: flex;
+  width: 260px;
+  height: 100svh;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
+  border-right: 1px solid #bcc9d3;
+  background: #031926;
+  gap: 44px;
+  position: relative;
+  .heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 28px 32px;
+    padding-bottom: 0;
+    .logo {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      img {
+        height: 29px;
+      }
+      p {
+        color: #fff;
+        font-size: 16px;
+        font-weight: 600;
+      }
+    }
+  }
+  .nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    .nav-links {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+
+    }
+  }
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 30px;
+  width: 100%;
+  .sec-name {
+    color: #f1f6f1;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.24px;
+    padding: 0 24px;
+  }
+  .sec-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+    padding: 0 16px;
+    a {
+      display: flex;
+      padding: 12px 32px 12px 16px;
+      align-items: center;
+      gap: 12px;
+      align-self: stretch;
+      border-radius: 12px;
+      text-decoration: none;
+      p {
+        color: #e2f9ff;
+        font-family: Poppins;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+      &.active {
+        background: #8aff76;
+        backdrop-filter: blur(17.5px);
+        p {
+          color: #0e272d;
+        }
+        ::ng-deep svg path {
+          stroke: #0E272D !important;
+        }
+      }
+    }
+  }
+}
+
+.logout {
+  display: flex;
+  gap: 12px;
+  cursor: pointer;
+  align-items: center;
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  p {
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    color: #fff;
+  }
+}

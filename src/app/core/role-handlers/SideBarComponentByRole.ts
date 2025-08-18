@@ -1,6 +1,7 @@
+import {
+  CompanyNavigationBarComponent
+} from "../../shared/components/company-navigation-bar/company-navigation-bar.component";
 
 export const SideBarComponentByRole = {
-  // 'Admin':AdminNavigationBarComponent,
-  // 'Educator':EducatorNavigationBarComponent,
-  // 'Student':StudentNavigationBarComponent,
+  'ROLE_COMPANY':CompanyNavigationBarComponent,
 };

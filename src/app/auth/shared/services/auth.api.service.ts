@@ -23,6 +23,6 @@ export class AuthApiService extends BaseApiService {
     return this.post(this.serviceUrl + 'forgot-password', req)
   }
   Exists(username:string){
-    return this.get(this.serviceUrl + '/account-exists/', username);
+    return this.get(this.serviceUrl + 'account-exists/', username);
   }
 }

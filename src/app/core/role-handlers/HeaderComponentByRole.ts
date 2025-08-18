@@ -1,6 +1,4 @@
 
 export const HeaderComponentByRole = {
-  // 'Admin':AdminHeaderComponent,
-  // 'Educator':EducatorHeaderComponent,
-  // 'Student':StudentHeaderComponent,
+  // 'ROLE_COMPANY':AdminHeaderComponent,
 };

@@ -32,7 +32,7 @@ export class SignInComponent {
   }
 
   requestForm = this.fb.group({
-    userName: ['', Validators.required],
+    username: ['', Validators.required],
     password: ['', Validators.required],
     remember: [false]
   });

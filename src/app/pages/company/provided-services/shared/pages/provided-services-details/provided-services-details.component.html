@@ -1,0 +1,127 @@
+<div class="wrapper">
+  <div class="crumbs">
+    <p style="cursor: pointer" routerLink="/main/company/services">
+      Services list
+    </p>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="6"
+      height="10"
+      viewBox="0 0 6 10"
+      fill="none"
+    >
+      <path
+        d="M1 9L5 5L1 1"
+        stroke="#A3A3A3"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+    <p class="green">Service details</p>
+  </div>
+
+  <div class="form">
+    <div class="heading">
+      <div class="txt">
+        <h3>Service Details</h3>
+        <p>Customers with past due payments requiring immediate attention</p>
+      </div>
+      <button routerLink="/main/company/services/upsert/{{ id }}">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="14"
+          height="15"
+          viewBox="0 0 14 15"
+          fill="none"
+        >
+          <path
+            d="M7.58264 12.7501H12.2493M12.3508 4.47373C12.6592 4.16539 12.8325 3.74717 12.8326 3.31106C12.8326 2.87495 12.6594 2.45668 12.3511 2.14827C12.0428 1.83985 11.6245 1.66656 11.1884 1.6665C10.7523 1.66645 10.3341 1.83964 10.0256 2.14798L2.24048 9.93489C2.10504 10.0699 2.00488 10.2362 1.94881 10.4191L1.17823 12.9577C1.16315 13.0082 1.16201 13.0618 1.17493 13.1128C1.18785 13.1638 1.21435 13.2104 1.25161 13.2476C1.28887 13.2848 1.33551 13.3113 1.38657 13.3241C1.43763 13.3369 1.49122 13.3357 1.54164 13.3206L4.08089 12.5506C4.26358 12.495 4.42983 12.3954 4.56506 12.2606L12.3508 4.47373Z"
+            stroke="black"
+            stroke-width="1.2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        Edit
+      </button>
+    </div>
+    <div class="line"></div>
+    <div class="row1">
+      <div class="input-item">
+        <label>{{ "Name" }} </label>
+        <input type="text" disabled [(ngModel)]="request.name" />
+      </div>
+    </div>
+    <div class="row1">
+      <div class="input-item file-input">
+        <label>{{ "Image" }}</label>
+        <label
+          class="file-label"
+          for="video"
+          [ngClass]="{ invalid: isSubmitted && !request.image.fileUrl }"
+        >
+          <p *ngIf="!request.image.fileUrl && !request.image.fileLoading">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="200"
+              height="40"
+              viewBox="0 0 200 40"
+              fill="none"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M97.778 29H102.222C105.343 29 106.904 29 108.025 28.265C108.509 27.948 108.925 27.5389 109.251 27.061C110 25.961 110 24.428 110 21.364C110 18.299 110 16.767 109.251 15.667C108.925 15.1892 108.509 14.78 108.025 14.463C107.305 13.99 106.403 13.821 105.022 13.761C104.363 13.761 103.796 13.271 103.667 12.636C103.568 12.1709 103.312 11.7541 102.942 11.456C102.571 11.1579 102.109 10.9969 101.634 11H98.366C97.378 11 96.527 11.685 96.333 12.636C96.204 13.271 95.637 13.761 94.978 13.761C93.598 13.821 92.696 13.991 91.975 14.463C91.4916 14.7801 91.0754 15.1892 90.75 15.667C90 16.767 90 18.299 90 21.364C90 24.428 90 25.96 90.749 27.061C91.073 27.537 91.489 27.946 91.975 28.265C93.096 29 94.657 29 97.778 29ZM100 17.273C97.699 17.273 95.833 19.104 95.833 21.363C95.833 23.623 97.699 25.454 100 25.454C102.301 25.454 104.167 23.623 104.167 21.364C104.167 19.104 102.301 17.273 100 17.273ZM100 18.909C98.62 18.909 97.5 20.008 97.5 21.364C97.5 22.719 98.62 23.818 100 23.818C101.38 23.818 102.5 22.719 102.5 21.364C102.5 20.008 101.38 18.909 100 18.909ZM104.722 18.091C104.722 17.639 105.095 17.273 105.556 17.273H106.666C107.126 17.273 107.5 17.639 107.5 18.091C107.498 18.3099 107.409 18.5191 107.253 18.6724C107.097 18.8258 106.886 18.9109 106.667 18.909H105.556C105.448 18.9101 105.34 18.8898 105.239 18.8492C105.139 18.8087 105.047 18.7487 104.97 18.6728C104.892 18.5968 104.83 18.5064 104.788 18.4065C104.745 18.3067 104.723 18.1995 104.722 18.091Z"
+                fill="#4B4B5A"
+              />
+            </svg>
+          </p>
+          <i
+            *ngIf="request.image.fileLoading"
+            class="pi pi-spin pi-spinner"
+          ></i>
+          <p *ngIf="request.image.fileUrl && !request.image.fileLoading">
+            {{ getFileName(request.image.fileName) }}
+          </p>
+        </label>
+        <input
+          id="video"
+          type="file"
+          [(ngModel)]="request.image.fakeFile"
+          disabled
+          multiple="false"
+          accept="image/*"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="form">
+    <div class="row1">
+      <div class="input-item">
+        <label>{{ "Reminder In Days" }} </label>
+        <input type="number" disabled [(ngModel)]="request.reminderInDays" />
+      </div>
+      <div class="input-item">
+        <label>{{ "Unit" }} </label>
+        <input type="text" disabled [(ngModel)]="request.unit" />
+      </div>
+    </div>
+    <div class="row1">
+      <div class="input-item">
+        <label>{{ "Price" }} </label>
+        <input type="number" disabled [(ngModel)]="request.price" />
+      </div>
+    </div>
+  </div>
+  <div class="form">
+    <div class="btns">
+      <button *ngIf="!request.active" class="activate" (click)="activate()">
+        Activate Service
+      </button>
+      <button *ngIf="request.active" class="deactivate" (click)="deactivate()">
+        Deactivate Service
+      </button>
+    </div>
+  </div>
+</div>

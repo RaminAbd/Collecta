@@ -2,9 +2,28 @@
 @import url('../node_modules/primeicons/primeicons.css');
 @import url('../node_modules/primeng/resources/themes/saga-orange/theme.css');
 @import url('../node_modules/primeng/resources/primeng.css');
-
+@font-face {
+  font-family: "Poppins";
+  font-weight: 400;
+  src: url("../public/fonts/Poppins-Regular.ttf");
+}
+@font-face {
+  font-family: "Poppins";
+  font-weight: 500;
+  src: url("../public/fonts/Poppins-Medium.ttf");
+}
+@font-face {
+  font-family: "Poppins";
+  font-weight: 600;
+  src: url("../public/fonts/Poppins-SemiBold.ttf");
+}
+@font-face {
+  font-family: "Poppins";
+  font-weight: 700;
+  src: url("../public/fonts/Poppins-Bold.ttf");
+}
 :root{
-  --primary-orange: #FF521D;
+  --primary-color: #8aff76;
   --night-blue: #050530;
   --sky-blue:#2B4FE2;
   --background: black;
@@ -15,10 +34,11 @@
   --big-card-corners: .94em;
   --text-color: #13170c;
   --border-color: #90928d38;
+  --grey:#F5F5F5;
 }
 * {
   box-sizing: border-box;
-  font-family: "Georgian", sans-serif !important;
+  font-family: "Poppins", sans-serif !important;
 }
 
 body {
@@ -145,7 +165,7 @@ button {
     width: 20px;
     height: 20px;
     border-radius: 4px;
-    background: var(--primary-color);
+    background: #11272A;
     margin: 0;
     color: #fff;
     font-size: 14px;
@@ -308,14 +328,18 @@ button[disabled] {
   font-weight: 400 !important;
 }
 .p-dropdown {
-  border-radius: 8px !important;
   outline: none !important;
-  background: var(--grey) !important;
   width: 100%;
+  border-radius: 12px !important;
+  border: 1px solid #DFDFDF;
+  background: #FFF !important;
+}
+.p-dropdown-panel .p-dropdown-items{
+  padding: 0.5rem 0 !important;
 }
 .p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
-  color: var(--primary-color) !important;
-  background: #bc08081f !important;
+  //color: var(--primary-color) !important;
+  background: #fff !important;
 }
 .p-dropdown:not(.p-disabled).p-focus {
   border-color: var(--half-grey) !important;
@@ -612,10 +636,13 @@ p-datepicker {
 
     input {
       width: 100%;
-      border-radius: 12px;
       color: var(--text-color) !important;
       font-weight: 600;
       font-size: 14px;
+      border-radius: 12px;
+      border: 1px solid #DFDFDF;
+      background: #FFF !important;
+      height: 49px;
     }
   }
 }
@@ -629,11 +656,11 @@ p-datepicker {
     color: var(--netural-80, #4e4e4e);
     margin-top: 8px;
     width: 100%;
-    height: 40px;
+    height: 49px;
     text-align: center;
-    background: var(--grey) !important;
+    //background: var(--grey) !important;
     border-radius: 12px;
-    border: 1px solid var(--border-color);
+    border: 1px solid #DFDFDF;
     p {
       width: 100%;
       height: 100%;
@@ -656,12 +683,14 @@ p-datepicker {
   .input-item {
     gap: 6px;
     label {
+      color: #000;
+      font-family: Poppins;
+      font-size: 14px;
       font-style: normal;
       font-weight: 500;
-      font-size: 14px;
-      line-height: 17px;
-      color: #4b4b4bb3;
+      line-height: normal;
       cursor: pointer;
+
     }
     p {
       font-style: normal;

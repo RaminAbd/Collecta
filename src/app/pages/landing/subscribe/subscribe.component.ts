@@ -1,6 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {FormsModule} from "@angular/forms";
-import {ApplicationMessageCenterService} from "../../core/services/ApplicationMessageCenter.service";
+import {ApplicationMessageCenterService} from "../../../core/services/ApplicationMessageCenter.service";
 
 @Component({
   selector: 'app-subscribe',

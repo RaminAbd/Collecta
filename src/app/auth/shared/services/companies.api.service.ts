@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import {BaseApiService} from "../../../core/services/base.api.service";
 import {HttpClient} from "@angular/common/http";
 import {ApplicationMessageCenterService} from "../../../core/services/ApplicationMessageCenter.service";
+import {BaseCrudApiService} from "../../../core/services/base-crud.api.service";
 
 @Injectable({
   providedIn: 'root'
 })
-export class CompaniesApiService extends BaseApiService {
+export class CompaniesApiService extends BaseCrudApiService {
   serviceUrl = 'Companies/';
   constructor(http: HttpClient, handler: ApplicationMessageCenterService) {
     super(http, handler);

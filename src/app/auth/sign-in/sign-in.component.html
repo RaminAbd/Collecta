@@ -18,16 +18,15 @@
           (submit)="Action()"
           class="item expander-container"
         >
-
           <div class="inputs">
             <div class="row1">
               <div class="input-item">
-                <label for="username">{{ "Phone number" | translate }}</label>
+                <label for="username">{{ "Username" | translate }}</label>
                 <input
                   type="text"
-                  formControlName="userName"
+                  formControlName="username"
                   id="username"
-                  [class.invalid]="validateField('userName')"
+                  [class.invalid]="validateField('username')"
                 />
               </div>
             </div>

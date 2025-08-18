@@ -1,0 +1,85 @@
+<div class="table-wrapper">
+  <p-table
+    [value]="array"
+    #dt1
+    id="excel-table"
+    dataKey="id"
+    [showCurrentPageReport]="true"
+    styleClass="p-datatable-customers"
+    [columns]="cols"
+    [rows]="10"
+    [paginator]="true"
+    selectionMode="single"
+    currentPageReportTemplate="{first} - {last} of {totalRecords}"
+    [loading]="loading"
+  >
+    <ng-template pTemplate="caption">
+      <div class="flex my-table-header">
+        <div class="back-name-create">
+          <div class="name">
+            <h3>{{ TableName }}</h3>
+            <p>{{ tableDescription }}</p>
+          </div>
+          <button (click)="tableAction(null, 1)">
+            <i class="pi pi-plus"></i>
+            Add new
+          </button>
+        </div>
+        <div class="search">
+          <span class="p-input-icon-left ml-auto" *ngIf="FilterFields">
+            <i class="pi pi-search"></i>
+            <input
+              pInputText
+              type="text"
+              (input)="dt1.filterGlobal(getEventValue($event), 'contains')"
+              placeholder="{{ 'Search' }}"
+            />
+          </span>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header" let-column>
+      <tr style="border-top: none">
+        <th *ngFor="let col of cols" style="font-size: 12px">
+          <div class="ui-table-sort-th">
+            <span>{{ col.header }}</span>
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+      <tr>
+        <td *ngFor="let col of columns" [ngStyle]="{ width: col.width }">
+          <p
+            class="col-field"
+            *ngIf="col.field !== 'show' && col.field !== 'status'"
+          >
+            {{ rowData[col.field] }}
+          </p>
+          <div
+            class="status"
+            *ngIf="col.field === 'status'"
+            [ngClass]="{ active: rowData[col.field] }"
+          >
+            <div class="dot"></div>
+            <p>{{ rowData[col.field] ? "Active" : "InActive" }}</p>
+          </div>
+
+          <div class="d-flex crud-actions" *ngIf="col.field === 'view'">
+            <button class="edit" (click)="tableAction(rowData, 4, $event)">
+              Details
+            </button>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="loadingbody" let-columns>
+      <tr>
+        <td [attr.colspan]="columns.length">
+          <p-skeleton></p-skeleton>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+<!--<p-confirmPopup></p-confirmPopup>-->

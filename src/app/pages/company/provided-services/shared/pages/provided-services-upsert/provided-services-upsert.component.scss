@@ -1,0 +1,134 @@
+.wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+  .crumbs {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    p {
+      color: #a3a3a3;
+      font-family: Poppins;
+      font-size: 13px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      &.green {
+        color: #395;
+      }
+    }
+  }
+
+  .form {
+    display: flex;
+    width: 100%;
+    max-width: 716px;
+    padding: 25px 24px;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 24px;
+    border-radius: 12px;
+    border: 1px solid #F4F4F4;
+    background: #FFF;
+    .heading{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      align-self: stretch;
+      h3{
+        color: #02191C;
+        font-family: Poppins;
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 120%; /* 38.4px */
+      }
+      p{
+        color: #02191C;
+        font-family: Poppins;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+      }
+    }
+    .line{
+      height: 2px;
+      width: 100%;
+      background:#F4F4F4;
+    }
+    .row {
+      width: 100%;
+      .input-item {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        flex: 1;
+        width: 100%;
+        @media (max-width: 769px) {
+          width: 100%;
+        }
+
+        label {
+          color: #90928d;
+          font-size: 14px;
+          font-weight: 500;
+        }
+      }
+    }
+    ::ng-deep {
+      .p-select .p-select-overlay {
+        max-width: 100%;
+      }
+      .p-select-option {
+        white-space: normal;
+      }
+      .p-editor .p-editor-content.ql-snow {
+        height: 430px !important;
+      }
+    }
+    .btns {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      button {
+        display: flex;
+        padding: 8px 16px;
+        align-items: center;
+        gap: 6px;
+        border-radius: 12px;
+        background: #11272A;
+        color: #FFF;
+        font-family: Poppins;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        width: 116px;
+        height: 37px;
+        justify-content: center;
+      }
+    }
+  }
+}
+::ng-deep{
+  p-dropdown.invalid{
+    border:none !important;
+  }
+}
+.empty-file{
+  color: #03181D !important;
+  font-family: Poppins !important;
+  font-size: 14px !important;
+  font-style: normal;
+  font-weight: 400 !important;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+}

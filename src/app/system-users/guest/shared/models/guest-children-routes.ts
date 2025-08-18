@@ -1,9 +1,9 @@
 import { Route } from '@angular/router';
-import {HomeComponent} from "../../../../pages/home/home.component";
-import {SubscribeComponent} from "../../../../pages/subscribe/subscribe.component";
-import {AboutUsComponent} from "../../../../pages/about-us/about-us.component";
-import {ServicesComponent} from "../../../../pages/services/services.component";
-import {ContactComponent} from "../../../../pages/contact/contact.component";
+import {HomeComponent} from "../../../../pages/landing/home/home.component";
+import {SubscribeComponent} from "../../../../pages/landing/subscribe/subscribe.component";
+import {AboutUsComponent} from "../../../../pages/landing/about-us/about-us.component";
+import {ServicesComponent} from "../../../../pages/landing/services/services.component";
+import {ContactComponent} from "../../../../pages/landing/contact/contact.component";
 
 export class GuestChildrenRoutes {
   static children: Route[] = [

@@ -1,0 +1,144 @@
+<div class="wrapper">
+  <div class="crumbs">
+    <p style="cursor: pointer" routerLink="/main/company/services">
+      Services list
+    </p>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="6"
+      height="10"
+      viewBox="0 0 6 10"
+      fill="none"
+    >
+      <path
+        d="M1 9L5 5L1 1"
+        stroke="#A3A3A3"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+    <p *ngIf="id !== 'create'" style="cursor:pointer;"routerLink="/main/company/services/details/{{id}}">Service details</p>
+    <svg
+      *ngIf="id !== 'create'"
+      xmlns="http://www.w3.org/2000/svg"
+      width="6"
+      height="10"
+      viewBox="0 0 6 10"
+      fill="none"
+    >
+      <path
+        d="M1 9L5 5L1 1"
+        stroke="#A3A3A3"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+    <p class="green">{{id === 'create' ? 'Add a new service' : 'Update a service'}}</p>
+  </div>
+
+  <div class="form">
+    <div class="heading">
+      <h3>{{id === 'create' ? 'Add a new service' : 'Update a service'}}</h3>
+      <p>Customers with past due payments requiring immediate attention</p>
+    </div>
+    <div class="line"></div>
+    <div class="row1">
+      <div class="input-item">
+        <label>{{ "Name" }} </label>
+        <input
+          type="text"
+          [ngClass]="{
+          invalid: !request.name && isSubmitted,
+        }"
+          [(ngModel)]="request.name"
+        />
+      </div>
+    </div>
+    <div class="row1">
+      <div class="input-item file-input">
+        <label>{{ "Image" }}</label>
+        <label class="file-label" for="video" [ngClass]="{'invalid':isSubmitted && !request.image.fileUrl}">
+          <p
+            class="empty-file"
+            *ngIf="!request.image.fileUrl && !request.image.fileLoading"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              viewBox="0 0 14 14"
+              fill="none"
+            >
+              <path
+                d="M7 1.75V8.75M7 1.75L9.91667 4.66667M7 1.75L4.08333 4.66667M12.25 8.75V11.0833C12.25 11.3928 12.1271 11.6895 11.9083 11.9083C11.6895 12.1271 11.3928 12.25 11.0833 12.25H2.91667C2.60725 12.25 2.3105 12.1271 2.09171 11.9083C1.87292 11.6895 1.75 11.3928 1.75 11.0833V8.75"
+                stroke="#03181D"
+                stroke-width="1.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            Upload Image
+          </p>
+          <i *ngIf="request.image.fileLoading" class="pi pi-spin pi-spinner"></i>
+          <p *ngIf="request.image.fileUrl && !request.image.fileLoading">
+            {{ getFileName(request.image.fileName) }}
+          </p>
+        </label>
+        <input
+          id="video"
+          type="file"
+          [(ngModel)]="request.image.fakeFile"
+          (change)="getFile($event)"
+          multiple="false"
+          accept="image/*"
+        />
+      </div>
+    </div>
+
+
+  </div>
+  <div class="form">
+
+    <div class="row1">
+      <div class="input-item">
+        <label>{{ "Reminder In Days" }} </label>
+        <input
+          type="number"
+          [ngClass]="{
+          invalid: !request.reminderInDays && isSubmitted,
+        }"
+          [(ngModel)]="request.reminderInDays"
+        />
+      </div>
+      <div class="input-item">
+        <label>{{ "Unit" }} </label>
+        <input
+          type="text"
+          [ngClass]="{
+          invalid: !request.unit && isSubmitted,
+        }"
+          [(ngModel)]="request.unit"
+        />
+      </div>
+    </div>
+    <div class="row1">
+      <div class="input-item">
+        <label>{{ "Price" }} </label>
+        <input
+          type="number"
+          [ngClass]="{
+          invalid: !request.price && isSubmitted,
+        }"
+          [(ngModel)]="request.price"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="form">
+    <div class="btns">
+      <button (click)="save()">Save</button>
+    </div>
+  </div>
+</div>

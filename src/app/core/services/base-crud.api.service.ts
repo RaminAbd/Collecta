@@ -16,7 +16,7 @@ export class BaseCrudApiService extends BaseApiService {
       this.get(serviceUrl + 'GetAll/', null, null)
         .toPromise()
         .then((resp) => {
-          resolve(resp.data);
+          resolve(resp);
         });
     });
   }
@@ -26,17 +26,17 @@ export class BaseCrudApiService extends BaseApiService {
       this.post(serviceUrl + 'Create', form)
         .toPromise()
         .then((resp) => {
-          resolve(resp.data);
+          resolve(resp);
         });
     });
   }
 
   Edit(serviceUrl: string, form: any) {
     return new Promise((resolve) => {
-      this.post(serviceUrl + 'Edit', form)
+      this.post(serviceUrl + 'Update', form)
         .toPromise()
         .then((resp) => {
-          resolve(resp.data);
+          resolve(resp);
         });
     });
   }
@@ -46,7 +46,7 @@ export class BaseCrudApiService extends BaseApiService {
       this.get(serviceUrl + 'Get/', id, null)
         .toPromise()
         .then((resp) => {
-          resolve(resp.data);
+          resolve(resp);
         });
     });
   }
@@ -56,7 +56,7 @@ export class BaseCrudApiService extends BaseApiService {
       this.get(serviceUrl + 'Get/', null, obj)
         .toPromise()
         .then((resp) => {
-          resolve(resp.data);
+          resolve(resp);
         });
     });
   }
@@ -66,7 +66,7 @@ export class BaseCrudApiService extends BaseApiService {
       this.delete(serviceUrl + 'Delete/', id)
         .toPromise()
         .then((resp) => {
-          resolve(resp.data);
+          resolve(resp);
         });
     });
   }

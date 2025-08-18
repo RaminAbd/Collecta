@@ -1,0 +1,10 @@
+<div>
+  <app-provided-services-table
+    [Array]="items"
+    [cols]="cols"
+    [TableName]="'Service list'"
+    [tableDescription]="'Customers with past due payments requiring immediate attention'"
+    [showCreate]="true"
+    (Action)="tableActionHandler($event)"
+  ></app-provided-services-table>
+</div>
