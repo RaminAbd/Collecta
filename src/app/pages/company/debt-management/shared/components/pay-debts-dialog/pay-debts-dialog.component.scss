@@ -1,0 +1,110 @@
+.wrapper {
+  .table-block {
+    .heading {
+      display: flex;
+      padding-bottom: 8px;
+      align-items: flex-start;
+      gap: 16px;
+      align-self: stretch;
+      border-bottom: 1px solid #bed3e8;
+      .col {
+        p {
+          text-align: left;
+          color: var(--Primary-700, #234e58);
+          font-family: Poppins;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: normal;
+        }
+      }
+    }
+    .body {
+      height: 365px;
+      overflow: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      align-self: stretch;
+      margin-top: 12px;
+      .row {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 8px 0;
+        width: 100%;
+        .col {
+          flex: 1;
+          p {
+            color: #4c4c4c;
+            font-family: Poppins;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            text-align: left;
+          }
+        }
+      }
+    }
+    .date{
+      border-top: 1px solid #BED3E8;
+      margin-top: 24px;
+      padding-top: 16px;
+      display: flex;
+      align-items: center;
+      gap:8px;
+      p{
+        color: var(--Primary-700, #234E58);
+        font-family: Poppins;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+
+      }
+      span{
+        color: #3B3B3B;
+        font-family: Poppins;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+    }
+    .btns{
+      margin-top: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      align-self: stretch;
+      button{
+        display: flex;
+        padding: 8px 24px;
+        align-items: center;
+        gap: 6px;
+        border-radius: 16px;
+        background: #04292E;
+        color: #FFF;
+        font-family: Poppins;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        height: 37px;
+      }
+    }
+  }
+}
+::ng-deep{
+  .p-dropdown .p-dropdown-label{
+    color: #4c4c4c !important;
+    font-family: Poppins;
+    font-size: 14px !important;
+    font-style: normal;
+    font-weight: 400 !important;
+    line-height: normal;
+    text-align: left;
+  }
+}

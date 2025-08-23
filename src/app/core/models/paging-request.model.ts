@@ -3,6 +3,6 @@ export class PagingRequestModel {
   PageSize: number = 10;
   SortField?: string;
   SortOrder?: number;
-  SearchText: string = '';
+  searchText?: string = '';
   sortType?: number;
 }

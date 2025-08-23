@@ -1,15 +1,18 @@
-.confirm-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: 100%;
-  gap: 25px;
-  i{
-    font-size: 40px;
-    color: orange;
+::ng-deep{
+  .confirm-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    gap: 25px;
+    i{
+      font-size: 40px;
+      color: #e7ae38;
+    }
   }
-  p{
-    font-size: 25px;
+  .p-confirm-dialog-message{
+    text-align: center;
+    color: #e7ae38;
   }
 }

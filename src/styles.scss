@@ -57,7 +57,7 @@ body {
 }
 
 *::-webkit-scrollbar-thumb {
-  background:var(--primary-orange)
+  background:var(--primary-color)
 }
 
 *::-webkit-scrollbar-thumb:hover {
@@ -488,8 +488,8 @@ p-calendar {
   padding: 0;
 }
 .p-datepicker table td > span.p-highlight {
-  color: var(--primary-color);
-  background: #bc08081f;
+  color: #0d5600;
+  //background: var(--primary-color);
 }
 .p-datepicker:not(.p-disabled)
 table
@@ -748,4 +748,56 @@ p-datepicker {
 .invalid {
   border: 1px solid #ff0000 !important;
   border-radius: 8px;
+}
+.p-confirm-dialog{
+  width: 380px !important;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.p-dialog.p-confirm-dialog .p-confirm-dialog-message{
+  margin: 0;
+  color: #e7ae38;
+}
+.p-dialog-content{
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  //text-align: center;
+  padding: 20px;
+
+  i{
+    color: #e7ae38;
+  }
+}
+.p-dialog-footer{
+  display: flex
+;
+  padding: 0 16px;
+  height: 70px;
+  align-items: center;
+  gap: 16px;
+  button{
+    flex:1;
+    display: flex;
+    padding: 6px 24px;
+    align-items: center;
+    gap: 6px;
+    border-radius: 12px;
+    border: 1px solid #F5F6F7;
+    background: #FCFCFC;
+    height: 40px;
+    color: #0E272D;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    .p-icon-wrapper{
+      display: none;
+    }
+  }
+  .p-confirm-dialog-accept{
+    background: #04292e;
+    color: #fff;
+  }
 }

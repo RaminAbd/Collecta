@@ -69,9 +69,21 @@
   p-dropdown.invalid {
     border: none !important;
   }
+  .p-inputtext:enabled:focus, .p-inputtext:enabled:hover{
+    height: 49px !important;
+  }
 }
 
 ::ng-deep .p-dynamic-dialog{
   border-radius: 12px;
   overflow: hidden;
+}
+.input {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.icon {
+  position: absolute;
+  right: 16px;
 }

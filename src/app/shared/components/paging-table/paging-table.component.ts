@@ -74,7 +74,7 @@ export class PagingTableComponent {
   }
 
   clear() {
-    this.pagingRequest.SearchText = '';
+    this.pagingRequest.searchText = '';
     this.FilterCustomers()
   }
 

@@ -10,6 +10,7 @@ import {
 import {
   CustomerDetailsComponent
 } from "../../../../pages/company/customers/shared/pages/customer-details/customer-details.component";
+import {DebtManagementComponent} from "../../../../pages/company/debt-management/debt-management.component";
 export class CompanyChildrenRoutes {
   static children: Route[] = [
     { path: 'services', component: ProvidedServicesComponent },
@@ -24,6 +25,8 @@ export class CompanyChildrenRoutes {
     { path: 'customers', component: CustomersComponent },
     { path: 'customers/upsert/:id', component: CustomersUpsertComponent },
     { path: 'customers/details/:id', component: CustomerDetailsComponent },
+
+    { path: 'debt-management', component: DebtManagementComponent },
 
     { path: '', redirectTo: 'services', pathMatch: 'full' },
   ];

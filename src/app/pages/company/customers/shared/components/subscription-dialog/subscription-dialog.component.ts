@@ -8,6 +8,7 @@ import {
 import {SubscriptionModel} from "../../models/subscription.model";
 import {DynamicDialogConfig, DynamicDialogRef} from "primeng/dynamicdialog";
 import {ApplicationMessageCenterService} from "../../../../../../core/services/ApplicationMessageCenter.service";
+import {CalendarModule} from "primeng/calendar";
 
 @Component({
   selector: 'app-subscription-dialog',
@@ -15,8 +16,8 @@ import {ApplicationMessageCenterService} from "../../../../../../core/services/A
   imports: [
     DropdownModule,
     FormsModule,
-    NgForOf,
-    NgClass
+    NgClass,
+    CalendarModule
   ],
   templateUrl: './subscription-dialog.component.html',
   styleUrl: './subscription-dialog.component.scss'
@@ -28,16 +29,19 @@ export class SubscriptionDialogComponent {
   isSubmitted: boolean = false;
   providedServices:ProvidedServicesResponseModel[];
   request:SubscriptionModel = new SubscriptionModel();
+  startDate:any
   constructor() {
     this.providedServices = this.config.data;
   }
 
   save() {
+
     this.isSubmitted = true;
-    if(!this.request.serviceId || !this.request.qty || !this.request.price || !this.request.payDay){
+    if(!this.request.serviceId || !this.request.qty || !this.request.price || !this.request.payDay || !this.startDate){
       this.message.showTranslatedWarningMessage("Please fill all fields.");
       return;
     }
+    this.request.startAt = this.startDate.toISOString();
     this.ref.close(this.request)
   }
 }

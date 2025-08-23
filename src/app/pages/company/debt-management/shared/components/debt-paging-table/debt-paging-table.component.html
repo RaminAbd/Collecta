@@ -1,0 +1,96 @@
+<div class="table-wrapper">
+  <p-table
+    [value]="response.items"
+    [columns]="cols"
+    [sortOrder]="0"
+    [styleClass]="'p-datatable-sm'"
+    [loading]="loading"
+  >
+    <ng-template pTemplate="header" let-column>
+      <tr style="border-top: none">
+        <th *ngFor="let col of cols" (click)="sortByField(col)">
+          <div
+            [ngStyle]="{
+              cursor: col.sorting ? 'pointer' : 'auto',
+              display: 'flex',
+              gap: '6px',
+              'align-items': 'center'
+            }"
+          >
+            {{ col.header | translate }}
+            <div class="sorting" *ngIf="col.sorting">
+              <i class="pi pi-sort-alt" *ngIf="col.sortValue === null"></i>
+              <i class="pi pi-sort-amount-up" *ngIf="col.sortValue"></i>
+              <i
+                class="pi pi-sort-amount-down"
+                *ngIf="col.sortValue === false"
+              ></i>
+            </div>
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+      <tr [ngClass]="{ selected: isSelected(rowData.id) }">
+        <td *ngFor="let col of columns" [ngStyle]="{ width: col.width }">
+          <div class="checkbox" *ngIf="col.field == 'check'">
+            <input
+              type="checkbox"
+              [(ngModel)]="rowData.checked"
+              (ngModelChange)="getCheckedElements(rowData)"
+            />
+          </div>
+          <p
+            class="col-field"
+            *ngIf="col.field !== 'actions' && col.field !== 'check'"
+          >
+            {{ rowData[col.field] }}
+          </p>
+          <div class="btns" *ngIf="col.field === 'actions'">
+            <!--            <button class="det">Details</button>-->
+            <button class="det" (click)="confirm($event, rowData)">Pay</button>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage" let-columns>
+      <tr>
+        <td [attr.colspan]="columns.length">
+          <div class="empty-image">
+            <div class="icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="13"
+                viewBox="0 0 14 13"
+                fill="none"
+              >
+                <path
+                  d="M11.1053 3.44444V1.61111C11.1053 1.44903 11.0387 1.2936 10.9203 1.17899C10.8018 1.06438 10.6412 1 10.4737 1H2.26316C1.92815 1 1.60686 1.12877 1.36997 1.35798C1.13308 1.58719 1 1.89807 1 2.22222M1 2.22222C1 2.54638 1.13308 2.85725 1.36997 3.08646C1.60686 3.31568 1.92815 3.44444 2.26316 3.44444H11.7368C11.9043 3.44444 12.065 3.50883 12.1834 3.62343C12.3019 3.73804 12.3684 3.89348 12.3684 4.05556V6.5M1 2.22222V10.7778C1 11.1019 1.13308 11.4128 1.36997 11.642C1.60686 11.8712 1.92815 12 2.26316 12H11.7368C11.9043 12 12.065 11.9356 12.1834 11.821C12.3019 11.7064 12.3684 11.551 12.3684 11.3889V8.94444M12.3684 6.5H10.4737C10.1387 6.5 9.81738 6.62877 9.5805 6.85798C9.34361 7.08719 9.21053 7.39807 9.21053 7.72222C9.21053 8.04638 9.34361 8.35725 9.5805 8.58646C9.81738 8.81567 10.1387 8.94444 10.4737 8.94444H12.3684M12.3684 6.5C12.5359 6.5 12.6966 6.56438 12.815 6.67899C12.9335 6.7936 13 6.94903 13 7.11111V8.33333C13 8.49541 12.9335 8.65085 12.815 8.76545C12.6966 8.88006 12.5359 8.94444 12.3684 8.94444"
+                  stroke="white"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <h4>You don’t have any costumers yet</h4>
+            <p>Add your costumers and manage your Finances</p>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="loadingbody" let-columns>
+      <tr>
+        <td [attr.colspan]="columns.length">
+          <p-skeleton height="1.5rem"></p-skeleton>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <app-paging-table-pagination
+    [Response]="response"
+    (Paginate)="Paginate($event)"
+  ></app-paging-table-pagination>
+</div>

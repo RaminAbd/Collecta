@@ -44,6 +44,8 @@ export class CustomerDetailsService {
       .GetById(this.service.serviceUrl, this.component.id)
       .then((resp: any) => {
         this.component.request = resp.data;
+        if(!this.component.request.image)this.component.request.image = new FileModel()
+        if(!this.component.request.document)this.component.request.document = new FileModel()
         this.getAllSubscriptions()
       });
   }
@@ -75,10 +77,10 @@ export class CustomerDetailsService {
   }
 
   addSubscription(e:SubscriptionModel){
-    let st =this.storage.getObject('authResponse');
     let req:any = {
-      subscriberId:st.id,
-      subscription:e
+      subscriberId:this.component.id,
+      subscription:e,
+      startAt:e.startAt
     }
     this.subsService.Add(req).subscribe((resp: any) => {
       this.getAllSubscriptions()
