@@ -318,7 +318,7 @@
               Customers with past due payments requiring immediate attention
             </p>
           </div>
-          <button>
+          <button [disabled]="excelLoading" (click)="downloadExcel()">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="12"

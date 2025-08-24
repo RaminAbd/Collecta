@@ -39,6 +39,7 @@ export class DebtManagementComponent {
   startDate: any;
   endDate: any;
   selectedItemsForPay: InvoicesResponseModel[] = [];
+  excelLoading:boolean = false;
   constructor() {
     this.service.component = this;
     this.request.status = 3;
@@ -87,5 +88,10 @@ export class DebtManagementComponent {
       },
       reject: () => {},
     });
+  }
+
+  downloadExcel() {
+    this.excelLoading = true;
+    this.service.downloadExcel()
   }
 }

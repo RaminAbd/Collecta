@@ -3,12 +3,11 @@ import { DebtManagementComponent } from './debt-management.component';
 import { InvoicesApiService } from './shared/services/invoices.api.service';
 import { StorageService } from '../../../core/services/storage.service';
 import { ProvidedServicesApiService } from '../provided-services/shared/services/provided-services.api.service';
-import {
-  SubscriptionDialogComponent
-} from "../customers/shared/components/subscription-dialog/subscription-dialog.component";
-import {DialogService} from "primeng/dynamicdialog";
-import {PayDebtsDialogComponent} from "./shared/components/pay-debts-dialog/pay-debts-dialog.component";
-import {ApplicationMessageCenterService} from "../../../core/services/ApplicationMessageCenter.service";
+import { SubscriptionDialogComponent } from '../customers/shared/components/subscription-dialog/subscription-dialog.component';
+import { DialogService } from 'primeng/dynamicdialog';
+import { PayDebtsDialogComponent } from './shared/components/pay-debts-dialog/pay-debts-dialog.component';
+import { ApplicationMessageCenterService } from '../../../core/services/ApplicationMessageCenter.service';
+import { InvoicesPagingRequestModel } from './shared/models/invoices-paging-request.model';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +15,9 @@ import {ApplicationMessageCenterService} from "../../../core/services/Applicatio
 export class DebtManagementService {
   private service: InvoicesApiService = inject(InvoicesApiService);
   private storage: StorageService = inject(StorageService);
-  private message: ApplicationMessageCenterService = inject(ApplicationMessageCenterService);
+  private message: ApplicationMessageCenterService = inject(
+    ApplicationMessageCenterService
+  );
   public dialogService: DialogService = inject(DialogService);
   private psService: ProvidedServicesApiService = inject(
     ProvidedServicesApiService
@@ -29,13 +30,18 @@ export class DebtManagementService {
     let st = this.storage.getObject('authResponse');
     this.component.request.companyId = st.id;
     delete this.component.request.subscriberId;
-    // this.component.request.PageSize = 1;
-    // if (!this.component.request.status) delete this.component.request.status;
+    delete this.component.request.SortField;
+    delete this.component.request.SortOrder;
+    delete this.component.request.sortType;
+
+    if (!this.component.request.status) delete this.component.request.status;
+    if (this.component.request.serviceIds?.length === 0)
+      delete this.component.request.serviceIds;
     if (!this.component.request.from) delete this.component.request.from;
     if (!this.component.request.to) delete this.component.request.to;
     if (!this.component.request.searchText)
       delete this.component.request.searchText;
-    this.setCols()
+    this.setCols();
     this.service.Filter(this.component.request).subscribe((resp) => {
       // console.log(resp.data);
       this.component.response = resp.data;
@@ -43,7 +49,9 @@ export class DebtManagementService {
         ...item,
         customer: item.firstName + ' ' + item.lastName,
         amount: '$' + item.totalAmount,
-        checked:this.component.selectedItemsForPay.some(x => x.id === item.id)
+        checked: this.component.selectedItemsForPay.some(
+          (x) => x.id === item.id
+        ),
       }));
     });
   }
@@ -64,9 +72,9 @@ export class DebtManagementService {
       { field: 'code', header: 'Transaction code' },
       { field: 'actions', header: 'Action' },
     ];
-    if(this.component.request.status === 2){
-      this.component.cols.splice(0,1)
-      this.component.cols.splice(5,1)
+    if (this.component.request.status === 2) {
+      this.component.cols.splice(0, 1);
+      this.component.cols.splice(5, 1);
     }
   }
 
@@ -82,29 +90,44 @@ export class DebtManagementService {
     });
   }
 
-
-
-  openDialog(items:any){
+  openDialog(items: any) {
     const ref = this.dialogService.open(PayDebtsDialogComponent, {
       header: 'Confirm Payment',
       width: '750px',
       style: {
         maxWidth: '95%',
       },
-      data:items
+      data: items,
     });
     ref.onClose.subscribe((e: any) => {
       if (e) {
-        this.payAll(e)
+        this.payAll(e);
       }
     });
   }
 
-  payAll(req:any) {
+  payAll(req: any) {
     this.service.PayAll(req).subscribe((resp: any) => {
       this.message.showTranslatedSuccessMessage('Payed successfully.');
-      this.component.selectedItemsForPay = []
-      this.filter()
-    })
+      this.component.selectedItemsForPay = [];
+      this.filter();
+    });
+  }
+
+  downloadExcel() {
+    this.service.Export(this.component.request).subscribe((blob: Blob) => {
+      console.log(blob);
+      this.component.excelLoading = false;
+      const file = new Blob([blob], {
+        type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+      });
+      const fileURL = URL.createObjectURL(file);
+      let a = document.createElement('a');
+      a.href = fileURL;
+      a.target = '_blank';
+      a.download = 'Invoices.xlsx';
+      document.body.appendChild(a);
+      a.click();
+    });
   }
 }
