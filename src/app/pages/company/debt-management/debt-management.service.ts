@@ -115,19 +115,22 @@ export class DebtManagementService {
   }
 
   downloadExcel() {
-    this.service.Export(this.component.request).subscribe((blob: Blob) => {
-      console.log(blob);
-      this.component.excelLoading = false;
-      const file = new Blob([blob], {
-        type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-      });
-      const fileURL = URL.createObjectURL(file);
-      let a = document.createElement('a');
-      a.href = fileURL;
-      a.target = '_blank';
-      a.download = 'Invoices.xlsx';
-      document.body.appendChild(a);
-      a.click();
-    });
+    this.service.Export(this.component.request).subscribe(
+      (blob: Blob) => {
+        console.log(blob);
+        this.component.excelLoading = false;
+        const file = new Blob([blob], {
+          type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+        });
+        const fileURL = URL.createObjectURL(file);
+        let a = document.createElement('a');
+        a.href = fileURL;
+        a.target = '_blank';
+        a.download = 'Invoices.xlsx';
+        document.body.appendChild(a);
+        a.click();
+      },
+      (error) => (this.component.excelLoading = false)
+    );
   }
 }
